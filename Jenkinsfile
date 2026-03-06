@@ -38,4 +38,20 @@ pipeline {
             }
         }
     }
+     post {
+     success {
+         emailext (
+             subject: "Jenkins Build SUCCESS",
+             body: "Your Jenkins job was successful.",
+             to: "yourgmail@gmail.com"
+         )
+     }
+     failure {
+         emailext (
+             subject: "Jenkins Build FAILED",
+             body: "Your Jenkins job has failed. Please check Jenkins.",
+             to: "yourgmail@gmail.com"
+         )
+     }
+ }
 }
