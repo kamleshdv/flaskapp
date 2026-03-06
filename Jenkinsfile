@@ -38,22 +38,20 @@ pipeline {
             }
         }
     }
-    post{
-        success{
-            script{
-                emailext from: 'kamleshjaipur2039@gmail.com',
-                to: 'kamleshjaipur2039@gmail.com',
-                body: 'Build success for Demo CICD App',
-                subject: 'Build success for Demo CICD App'
-            }
-        }
-        failure{
-            script{
-                emailext from: 'kamleshjaipur2039@gmail.com',
-                to: 'kamleshjaipur2039@gmail.com',
-                body: 'Build Failed for Demo CICD App',
-                subject: 'Build Failed for Demo CICD App'
-            }
-        }
+post {
+    success {
+        emailext (
+            subject: "Jenkins Build SUCCESS",
+            body: "Your Jenkins job was successful.",
+            to: "kamleshjaipur2039@gmail.com"
+        )
     }
+    failure {
+        emailext (
+            subject: "Jenkins Build FAILED",
+            body: "Your Jenkins job has failed. Please check Jenkins.",
+            to: "kamleshjaipur@gmail.com"
+        )
+    }
+}
 }
